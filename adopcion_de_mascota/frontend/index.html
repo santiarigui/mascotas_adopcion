@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#eef5ff">
+    <title>NUBI | Un hogar, una nueva historia</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/app.js" defer></script>
+</head>
+<body>
+    <header class="site-header">
+        <nav class="navigation container" aria-label="Navegación principal">
+            <a class="brand" href="#inicio" aria-label="NUBI, inicio">
+                <span class="brand-icon" aria-hidden="true">🐾</span>
+                <span>NUBI</span>
+            </a>
+            <div class="nav-links">
+                <a href="#mascotas">Mascotas</a>
+                <a href="#gestionar">Gestionar adopción</a>
+                <a href="#solicitudes">Solicitudes</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero container" id="inicio">
+            <div class="hero-copy">
+                <p class="eyebrow">Adopta con el corazón</p>
+                <h1>Un hogar,<br><span>una nueva historia.</span></h1>
+                <p class="hero-description">
+                    En NUBI, cada encuentro puede convertirse en una amistad para toda la vida.
+                    Conoce a los perros y gatos que esperan una familia.
+                </p>
+                <a class="button button-primary" href="#mascotas">Conocer mascotas</a>
+            </div>
+            <div class="hero-art" aria-label="Ilustración de un perro y un gato" role="img">
+                <span class="art-sun"></span>
+                <span class="art-paw paw-one" aria-hidden="true">🐾</span>
+                <span class="art-paw paw-two" aria-hidden="true">🐾</span>
+                <span class="art-pets" aria-hidden="true">🐕 🐈</span>
+                <span class="art-note">Tu historia juntos<br>empieza aquí</span>
+            </div>
+        </section>
+
+        <div class="container">
+            <div class="notice" id="mensaje" role="status" aria-live="polite" hidden></div>
+        </div>
+
+        <section class="section container" id="mascotas">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">Conoce a tus nuevos amigos</p>
+                    <h2>Mascotas disponibles</h2>
+                </div>
+                <span class="section-mark" aria-hidden="true">✦</span>
+            </div>
+            <div class="pet-grid" id="lista-mascotas" aria-live="polite">
+                <p class="loading">Cargando mascotas...</p>
+            </div>
+        </section>
+
+        <section class="section section-tinted" id="gestionar">
+            <div class="container">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">Unos sencillos pasos</p>
+                        <h2>Gestionar una adopción</h2>
+                    </div>
+                    <span class="section-mark" aria-hidden="true">♡</span>
+                </div>
+                <div class="form-grid">
+                    <form class="panel form-panel" id="form-mascota">
+                        <div class="panel-title">
+                            <span class="panel-icon" aria-hidden="true">🐶</span>
+                            <div>
+                                <h3>Registrar mascota</h3>
+                                <p>Agrega un perro o un gato al catálogo.</p>
+                            </div>
+                        </div>
+                        <label for="tipo-mascota">Tipo de mascota</label>
+                        <select id="tipo-mascota" name="type" required>
+                            <option value="perro">Perro</option>
+                            <option value="gato">Gato</option>
+                        </select>
+                        <label for="nombre-mascota">Nombre</label>
+                        <input id="nombre-mascota" name="name" type="text" maxlength="60" required>
+                        <label for="edad-mascota">Edad en años</label>
+                        <input id="edad-mascota" name="age" type="number" min="0" step="1" required>
+                        <label for="detalle-mascota" id="etiqueta-detalle">Raza</label>
+                        <input id="detalle-mascota" name="detail" type="text" maxlength="60" required>
+                        <button class="button button-primary button-full" type="submit">
+                            Registrar mascota
+                        </button>
+                    </form>
+
+                    <form class="panel form-panel" id="form-adoptante">
+                        <div class="panel-title">
+                            <span class="panel-icon panel-icon-purple" aria-hidden="true">💜</span>
+                            <div>
+                                <h3>Registrar interesado</h3>
+                                <p>Cuéntanos quién quiere adoptar.</p>
+                            </div>
+                        </div>
+                        <label for="nombre-adoptante">Nombre completo</label>
+                        <input id="nombre-adoptante" name="name" type="text" maxlength="80" required>
+                        <label for="telefono-adoptante">Teléfono</label>
+                        <input id="telefono-adoptante" name="phone" type="tel" maxlength="30" required>
+                        <button class="button button-secondary button-full" type="submit">
+                            Registrar interesado
+                        </button>
+                    </form>
+
+                    <form class="panel form-panel" id="form-solicitud">
+                        <div class="panel-title">
+                            <span class="panel-icon panel-icon-cream" aria-hidden="true">🏡</span>
+                            <div>
+                                <h3>Crear solicitud</h3>
+                                <p>Vincula al interesado con una mascota.</p>
+                            </div>
+                        </div>
+                        <label for="seleccion-adoptante">Persona interesada</label>
+                        <select id="seleccion-adoptante" name="adopterId" required>
+                            <option value="">Registra primero a una persona</option>
+                        </select>
+                        <label for="seleccion-mascota">Mascota disponible</label>
+                        <select id="seleccion-mascota" name="animalId" required>
+                            <option value="">No hay mascotas disponibles</option>
+                        </select>
+                        <button class="button button-primary button-full" type="submit">
+                            Enviar solicitud
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section class="section container" id="solicitudes">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">Seguimiento</p>
+                    <h2>Solicitudes de adopción</h2>
+                </div>
+                <span class="section-mark" aria-hidden="true">⌂</span>
+            </div>
+            <div class="requests-list" id="lista-solicitudes" aria-live="polite">
+                <p class="empty-state">Todavía no hay solicitudes.</p>
+            </div>
+        </section>
+    </main>
+
+    <dialog class="detail-dialog" id="dialogo-detalle">
+        <div class="dialog-content">
+            <button class="dialog-close" id="cerrar-dialogo" type="button" aria-label="Cerrar">
+                &times;
+            </button>
+            <p class="eyebrow">Conoce su historia</p>
+            <h2 id="detalle-titulo">Mascota</h2>
+            <p id="detalle-texto"></p>
+        </div>
+    </dialog>
+
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <a class="brand footer-brand" href="#inicio">
+                <span class="brand-icon" aria-hidden="true">🐾</span>
+                <span>NUBI</span>
+            </a>
+            <p>Un hogar, una nueva historia.</p>
+        </div>
+    </footer>
+</body>
+</html>
